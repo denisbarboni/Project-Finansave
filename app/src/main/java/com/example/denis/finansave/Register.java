@@ -23,8 +23,6 @@ import com.google.android.gms.common.api.GoogleApiClient;
 public class Register extends Activity {
 
 
-    private GoogleApiClient client;
-
     Usuario usuario = new Usuario();
     EditText etNomeCadastro, etEmailCadastro, etSenhaCadastro;
     Button btCadastro;

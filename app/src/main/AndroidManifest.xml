@@ -25,7 +25,10 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity android:name=".TelaPrincipal" />
+        <activity
+            android:name=".Finansave"
+            android:label="@string/title_activity_drawer_navigation"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

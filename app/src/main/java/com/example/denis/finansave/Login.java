@@ -44,7 +44,8 @@ public class Login extends AppCompatActivity {
     }
 
     public void telaPrincipal(){
-        Intent intent = new Intent(getApplicationContext(), TelaPrincipal.class);
+        Intent intent = new Intent(getApplicationContext(), Finansave.class);
+        intent.putExtra("teste", etEmail.getText().toString());
         startActivity(intent);
     }
 
