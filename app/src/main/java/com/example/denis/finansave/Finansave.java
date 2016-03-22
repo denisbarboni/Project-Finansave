@@ -1,6 +1,5 @@
 package com.example.denis.finansave;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,29 +12,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
 public class Finansave extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_drawer_navigation);
-
-        TextView lblNome = (TextView) findViewById(R.id.lblNome);
-
-        String email = getIntent().getStringExtra("teste");
-
-
-        lblNome.setText(email);
-
-        //Toast.makeText(getApplicationContext(), email, Toast.LENGTH_LONG).show();
-
+        setContentView(R.layout.activity_finansave);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -62,7 +46,7 @@ public class Finansave extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.drawer_navigation, menu);
+        getMenuInflater().inflate(R.menu.finansave, menu);
         return true;
     }
 

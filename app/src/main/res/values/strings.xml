@@ -9,13 +9,9 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-<<<<<<< HEAD
-    <string name="action_settings">Configurações</string>
     <string name="title_activity_drawer_navigation">Finansave</string>
 
-    <string name="lblNomeText">Nome</string>
-    <string name="lblEmailText">E-Mail</string>
-=======
     <string name="action_settings">Settings</string>
->>>>>>> b1b8659dc65b401ec63ae93deea782464ed9c7bc
+    <string name="title_activity_finansave">Finansave</string>
+
 </resources>
