@@ -1,8 +1,7 @@
 package com.example.denis.finansave;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,6 +11,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class Finansave extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -24,13 +25,44 @@ public class Finansave extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        View header = navigationView.getHeaderView(0);
+
+        TextView nomeMenu = (TextView) header.findViewById(R.id.NomeMenu);
+        TextView emailMenu = (TextView) header.findViewById(R.id.EmailMenu);
+
+        String nome = getIntent().getStringExtra("email");
+        String email = getIntent().getStringExtra("nome");
+
+        if((nome != "" || nome != null) &&(email != "" || email != null) ) {
+            nomeMenu.setText(nome);
+            emailMenu.setText(email);
+        }
+
+        LinearLayout Receitas = (LinearLayout) findViewById(R.id.Receitas);
+        LinearLayout Despesas = (LinearLayout) findViewById(R.id.Despesas);
+
+        Receitas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), Receitas.class);
+                startActivity(i);
+            }
+        });
+
+        Despesas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), Despesas.class);
+                startActivity(i);
+            }
+        });
+
     }
 
     @Override
@@ -74,8 +106,6 @@ public class Finansave extends AppCompatActivity
         if (id == R.id.nav_camera) {
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {
 

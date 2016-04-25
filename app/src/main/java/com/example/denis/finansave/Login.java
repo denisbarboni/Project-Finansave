@@ -10,6 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.denis.finansave.dao.UserDao;
+import com.example.denis.finansave.model.Usuario;
+
 public class Login extends AppCompatActivity {
 
     Usuario usuario = new Usuario();
@@ -32,25 +35,31 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Login(etEmail.getText().toString(), etSenha.getText().toString());
+
             }
         });
     }
 
 
     public void Login(String email, String senha){
-        if(email.contentEquals("teste") && senha.contentEquals("123")){
+        usuario = new UserDao(this).getUser(email, senha);
+
+        if(usuario != null){
             telaPrincipal();
         }
     }
 
     public void telaPrincipal(){
         Intent intent = new Intent(getApplicationContext(), Finansave.class);
+        intent.putExtra("email", usuario.getEmail());
+        intent.putExtra("nome", usuario.getNome());
         startActivity(intent);
     }
 
     public void verificaSessao(){
         sharedPref = getSharedPreferences("login", Context.MODE_PRIVATE);
         boolean logado = sharedPref.getBoolean("logado", false);
+
         if(logado){
             ////iniciaTelaPrincipal();
         }

@@ -28,7 +28,23 @@
         <activity
             android:name=".Finansave"
             android:label="@string/title_activity_finansave"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Despesas"
+            android:label="@string/title_activity_despesas"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Receitas"
+            android:label="@string/title_activity_receitas"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".Despesas$Lancar" />
+        <activity android:name=".Lancar"></activity>
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.example.denis.finansave;
+package com.example.denis.finansave.model;
 
 /**
  * Created by denis on 10/03/2016.
@@ -10,6 +10,16 @@ public class Usuario {
     private String senha;
     private long id;
 
+
+    public Usuario(){
+
+    }
+
+    public Usuario(long id, String email, String nome) {
+        this.id = id;
+        this.email = email;
+        this.nome = nome;
+    }
 
     public String getNome() {
         return nome;
@@ -36,6 +46,14 @@ public class Usuario {
         this.id = id;
     }
 
-
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "nome='" + nome + '\'' +
+                ", email='" + email + '\'' +
+                ", senha='" + senha + '\'' +
+                ", id=" + id +
+                '}';
+    }
 }
 
