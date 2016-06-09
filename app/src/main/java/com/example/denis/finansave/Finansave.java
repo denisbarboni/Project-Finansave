@@ -187,8 +187,7 @@ public class Finansave extends AppCompatActivity
         AppIndex.AppIndexApi.end(client, viewAction);
         client.disconnect();
     }
-
-
+    
     //Cria uma Thread para realizar a soma das Despesas Acumuladas
     class LoadThread extends AsyncTask<Void, Void, Float> {
 
