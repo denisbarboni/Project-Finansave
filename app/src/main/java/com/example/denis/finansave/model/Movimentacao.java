@@ -1,5 +1,6 @@
 package com.example.denis.finansave.model;
 
+import java.sql.Blob;
 import java.util.Date;
 
 /**
@@ -10,6 +11,7 @@ public class Movimentacao {
     private float valor;
     private String data;
     private String descricao;
+    private byte[] foto;
     private TipoMovimentacao tipo;
     private long id;
 
@@ -19,12 +21,12 @@ public class Movimentacao {
 
     }
 
-    public Movimentacao(long id, Float valor, String data, String descricao, TipoMovimentacao tipo) {
-        this.id = id;
+    public Movimentacao(long id, Float valor, String data, String descricao, TipoMovimentacao tipo){
         this.valor = valor;
         this.data = data;
         this.descricao = descricao;
         this.tipo = tipo;
+       // this.foto = foto;
     }
 
     public Float getValor() {
@@ -57,6 +59,12 @@ public class Movimentacao {
     public void setId(long id) {
         this.id = id;
     }
+    public byte[] getFoto() {
+        return foto;
+    }
+    public void setFoto(byte[] foto) {
+        this.foto = foto;
+    }
 
     @Override
     public String toString() {
@@ -65,6 +73,7 @@ public class Movimentacao {
                 ", date='" + data + '\'' +
                 ", descricao='" + descricao + '\''+
                 ", tipo='" + tipo + '\'' +
+                ", foto='" + foto + '\'' +
                 ", id=" + id +
                 '}';
     }

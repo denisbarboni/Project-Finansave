@@ -20,61 +20,40 @@ public class MovimentacaoDao {
 
     BDCore auxbd;
 
-    public static  String TABLE_NAME = "movimentacao";
-    public static  String COLUMN_NAME_ID = "_id";
-    public static  String COLUMN_NAME_VALOR = "valor";
-    public static  String COLUMN_NAME_DATE = "data";
-    public static  String COLUMN_NAME_DESCRICAO = "descricao";
-    public static  String COLUMN_NAME_TIPO = "tipo";
+    public static String TABLE_NAME = "movimentacao";
+    public static String COLUMN_NAME_ID = "id";
+    public static String COLUMN_NAME_VALOR = "valor";
+    public static String COLUMN_NAME_DATE = "data";
+    public static String COLUMN_NAME_DESCRICAO = "descricao";
+    public static String COLUMN_NAME_TIPO = "tipo";
+    public static String COLUMN_NAME_FOTO = "foto";
 
     public static  String SQL_CREATE_MOVIMENTACAO =
             "CREATE TABLE movimentacao (" +
-                    "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     "valor TEXT, " +
                     "data TEXT, "+
                     "descricao TEXT, " +
+                    "foto BLOB, " +
                     "tipo integer );";
-
 
     public MovimentacaoDao(Context context){
         auxbd = new BDCore(context);
     }
 
-    public void inserirMovimentacao(Movimentacao movimentacao){
+    public ArrayList<Movimentacao> getMovimentacao(TipoMovimentacao tipoMovimentacao) {
 
-        ContentValues valores = new ContentValues();
-        valores.put(COLUMN_NAME_VALOR, movimentacao.getValor());
-        valores.put(COLUMN_NAME_DATE, movimentacao.getData());
-        valores.put(COLUMN_NAME_DESCRICAO, movimentacao.getDescricao());
-        valores.put(COLUMN_NAME_TIPO, movimentacao.getTipo().ordinal());
+        ArrayList<Movimentacao> lstMov = new ArrayList<Movimentacao>();
 
-        Long id = auxbd.getWritableDatabase().insert(TABLE_NAME, null, valores);
-
-        Log.i("inserir Movimentação", "o id eh " + id);
-
-    }
-
-    public List<Movimentacao> getMovimentacao(String tipo) {
-        Log.i("Entrou"," get Movimentacao");
-        List<Movimentacao> lstMov = new LinkedList<Movimentacao>();
-
-        String query = "SELECT * FROM " + TABLE_NAME+" WHERE tipo="+ tipo;
+        String query = "SELECT * FROM " + TABLE_NAME + " WHERE "+COLUMN_NAME_TIPO+" = "+ tipoMovimentacao.ordinal() +" ORDER BY " +COLUMN_NAME_DATE+ " DESC ";
 
         SQLiteDatabase db = auxbd.getReadableDatabase();
-        Log.i("getReadble","DataBase");
-
-        Log.i("nulo?", db.toString());
 
         Cursor cursor = db.rawQuery(query, null);
-
-        Log.i("cursor","passou");
-
-        Log.i("lst", "lst");
 
         Movimentacao mov = null;
 
         if (cursor.moveToFirst()) {
-            Log.i("Deveria ter entrado", "entrou?");
             do {
                 mov = new Movimentacao();
                 mov.setId(Integer.parseInt(cursor.getString(0)));
@@ -87,7 +66,33 @@ public class MovimentacaoDao {
 
             }while(cursor.moveToNext());
         }
-        Log.d("getMovimentacao()", lstMov.toString());
         return lstMov;
+    }
+
+    public void inserirMovimentacao(Movimentacao movimentacao){
+
+        ContentValues valores = new ContentValues();
+        valores.put(COLUMN_NAME_VALOR, movimentacao.getValor());
+        valores.put(COLUMN_NAME_DATE, movimentacao.getData());
+        valores.put(COLUMN_NAME_DESCRICAO, movimentacao.getDescricao());
+        valores.put(COLUMN_NAME_TIPO, movimentacao.getTipo().ordinal());
+
+        Long id = auxbd.getWritableDatabase().insert(TABLE_NAME, null, valores);
+
+        Log.i("inserir Movimentação","id " + id);
+
+    }
+
+    public void editarMovimentacao(Movimentacao mov) {
+
+        ContentValues valores = new ContentValues();
+        valores.put(COLUMN_NAME_VALOR, mov.getValor());
+        valores.put(COLUMN_NAME_DATE, mov.getData());
+        valores.put(COLUMN_NAME_DESCRICAO, mov.getDescricao());
+        valores.put(COLUMN_NAME_TIPO, mov.getTipo().ordinal());
+        String[] args = new String[]{Long.toString(mov.getId())};
+
+        int id = auxbd.getWritableDatabase().update(TABLE_NAME, valores, "id = ?", args);
+        Log.i("update Movimentação", "o id eh " + id);
     }
 }

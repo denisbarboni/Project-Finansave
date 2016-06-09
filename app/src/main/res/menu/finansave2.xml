@@ -2,8 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/voltar"
+        android:id="@+id/adicionar"
         android:orderInCategory="100"
-        android:title="voltar"
+        android:title="adicionar"
         app:showAsAction="never" />
 </menu>

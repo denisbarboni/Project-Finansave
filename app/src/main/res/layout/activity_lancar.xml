@@ -17,47 +17,82 @@
         android:inputType="numberDecimal"
         android:ems="10"
         android:id="@+id/etValor"
-        android:layout_marginTop="60dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:visibility="visible"
         android:autoText="false"
         android:singleLine="false"
         android:selectAllOnFocus="false"
-        android:hint=" Valor" />
+        android:hint=" Valor"
+        android:layout_marginTop="34dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/etData"
-        android:layout_above="@+id/etDesc"
-        android:layout_marginBottom="42dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
         android:hint="Data"
-        android:inputType="date" />
-
-
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/etDesc"
-        android:layout_centerVertical="true"
+        android:onClick="showDatePickerDialog"
+        android:id="@+id/etData"
+        android:editable="false"
+        android:elegantTextHeight="false"
+        android:focusableInTouchMode="false"
+        android:focusable="true"
+        android:layout_below="@+id/etValor"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:hint="Descrição" />
+        android:layout_marginTop="36dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:id="@+id/etDesc"
+        android:hint="Descrição"
+        android:layout_below="@+id/etData"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="38dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Deseja anexar arquivo ?"
+        android:id="@+id/txtAnexo"
+        android:layout_marginTop="46dp"
+        android:layout_below="@+id/etDesc"
+        android:layout_toRightOf="@+id/imgFotoTirada"
+        android:layout_toEndOf="@+id/imgFotoTirada" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imgFoto"
+        android:src="@drawable/ic_menu_camera"
+        android:layout_alignTop="@+id/txtAnexo"
+        android:layout_toRightOf="@+id/txtAnexo"
+        android:layout_toEndOf="@+id/txtAnexo"
+        android:layout_marginLeft="26dp"
+        android:layout_marginStart="26dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imgFotoTirada"
+        android:layout_below="@+id/imgFoto"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="21dp" />
+
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Cadastrar"
         android:id="@+id/btCadastrar"
-        android:layout_below="@+id/etDesc"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp" />
-
+        android:layout_marginBottom="47dp"
+        android:layout_alignParentBottom="true" />
 
 
 </RelativeLayout>
+
