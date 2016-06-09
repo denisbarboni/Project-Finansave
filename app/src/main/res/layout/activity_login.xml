@@ -42,7 +42,8 @@
         android:id="@+id/etEmail"
         android:layout_below="@+id/txtEmail"
         android:layout_alignLeft="@+id/txtSenha"
-        android:layout_alignStart="@+id/txtSenha" />
+        android:layout_alignStart="@+id/txtSenha"
+        android:textColor="#ffffff" />
 
     <EditText
         android:layout_width="match_parent"
@@ -52,7 +53,8 @@
         android:id="@+id/etSenha"
         android:layout_below="@+id/txtSenha"
         android:layout_alignLeft="@+id/txtSenha"
-        android:layout_alignStart="@+id/txtSenha" />
+        android:layout_alignStart="@+id/txtSenha"
+        android:textColor="#ffffff" />
 
     <Button
         android:layout_width="match_parent"

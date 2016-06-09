@@ -135,7 +135,7 @@ public class Lancar extends Activity {
     }
 
     public boolean isEmptyFields(Float valor, String data, String descricao){
-        
+
         if (TextUtils.isEmpty(valor.toString().trim())){
             etValor.requestFocus(); //seta o foco para o campo Email
             etValor.setError("Preencha o campo Valor");
