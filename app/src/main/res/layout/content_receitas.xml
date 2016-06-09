@@ -15,7 +15,8 @@
         android:layout_height="304dp"
         android:id="@+id/lvReceitas"
         android:layout_alignParentBottom="true"
-        android:layout_weight="0.66" />
+        android:layout_weight="0.66"
+        android:background="#edeaea" />
 
     <RelativeLayout
         android:layout_width="match_parent"

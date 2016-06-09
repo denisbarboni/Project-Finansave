@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.denis.finansave.Finansave"
-    tools:showIn="@layout/app_bar_finansave">
+    tools:showIn="@layout/app_bar_finansave"
+    android:shape="rectangle">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,16 +17,19 @@
         android:weightSum="1"
         android:orientation="vertical">
 
+
+
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.33"
             android:weightSum="1"
-            android:background="#4f9beb"
+            android:background="#0263C1"
             android:clickable="false"
             android:baselineAligned="false"
-            android:id="@+id/VisaoGeral">
+            android:id="@+id/VisaoGeral"
+            android:textAlignment="center">
 
 
             <TextView
@@ -34,12 +38,16 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Visão Geral"
                 android:id="@+id/txtVisaoGeral"
-                android:layout_gravity="center_horizontal" />
+                android:layout_gravity="center_horizontal"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:textColor="#ffffff" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal">
+                android:layout_gravity="center_horizontal"
+                android:textAlignment="center">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -48,7 +56,10 @@
                     android:id="@+id/lblVisaoGeral"
                     android:layout_centerVertical="true"
                     android:layout_centerHorizontal="true"
-                    android:layout_gravity="center" />
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:textColor="#ffffff" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -57,9 +68,11 @@
                     android:text="R$   "
                     android:id="@+id/lblRSContas"
                     android:layout_alignTop="@+id/lblVisaoGeral"
-                    android:layout_toLeftOf="@+id/lblVisaoGeral"
                     android:layout_toStartOf="@+id/lblVisaoGeral"
-                    android:layout_gravity="center" />
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:textColor="#f9f7f7" />
             </RelativeLayout>
         </LinearLayout>
 
@@ -69,9 +82,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.33"
             android:weightSum="1"
-            android:background="#4ce11b"
+            android:background="#1B9D00"
             android:clickable="true"
-            android:id="@+id/Receitas">
+            android:id="@+id/Receitas"
+            android:textAlignment="center">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -79,11 +93,15 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Receitas"
                 android:id="@+id/txtReceitas"
-                android:layout_gravity="center_horizontal" />
+                android:layout_gravity="center_horizontal"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:textColor="#ffffff" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:textAlignment="center">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -92,7 +110,10 @@
                     android:id="@+id/lblReceitas"
                     android:layout_centerVertical="true"
                     android:layout_centerHorizontal="true"
-                    android:layout_gravity="center" />
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:textColor="#ffffff" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -103,7 +124,10 @@
                     android:layout_gravity="center"
                     android:layout_toLeftOf="@+id/lblReceitas"
                     android:layout_toStartOf="@+id/lblReceitas"
-                    android:layout_centerVertical="true" />
+                    android:layout_centerVertical="true"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:textColor="#f9f7f7" />
             </RelativeLayout>
 
         </LinearLayout>
@@ -114,13 +138,14 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.34"
             android:weightSum="1"
-            android:background="#ef4949"
+            android:background="#B60E0D"
             android:clickable="true"
             android:nestedScrollingEnabled="true"
             android:visibility="visible"
             android:id="@+id/Despesas"
             android:contextClickable="true"
-            android:baselineAligned="true">
+            android:baselineAligned="true"
+            android:textAlignment="center">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -128,12 +153,16 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Despesas"
                 android:id="@+id/txtDespesas"
-                android:layout_gravity="center_horizontal" />
+                android:layout_gravity="center_horizontal"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:textColor="#ffffff" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal">
+                android:layout_gravity="center_horizontal"
+                android:textAlignment="center">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -142,7 +171,10 @@
                     android:id="@+id/lblDespesas"
                     android:layout_centerVertical="true"
                     android:layout_centerHorizontal="true"
-                    android:layout_gravity="center" />
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:textColor="#ffffff" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -153,7 +185,10 @@
                     android:layout_centerVertical="true"
                     android:layout_toLeftOf="@+id/lblDespesas"
                     android:layout_toStartOf="@+id/lblDespesas"
-                    android:layout_gravity="center" />
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:textColor="#f9f7f7" />
             </RelativeLayout>
 
         </LinearLayout>

@@ -2,6 +2,8 @@ package com.example.denis.finansave;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -22,6 +24,9 @@ import android.widget.TextView;
 import com.example.denis.finansave.dao.MovimentacaoDao;
 import com.example.denis.finansave.model.Movimentacao;
 import com.example.denis.finansave.model.TipoMovimentacao;
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.common.api.GoogleApiClient;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -34,6 +39,11 @@ public class Finansave extends AppCompatActivity
     TextView lblDespesas;
     TextView lblReceitas;
     TextView lblVisaoGeral;
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    private GoogleApiClient client;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +68,7 @@ public class Finansave extends AppCompatActivity
         String nome = getIntent().getStringExtra("email");
         String email = getIntent().getStringExtra("nome");
 
-        if((nome != "" || nome != null) &&(email != "" || email != null) ) {
+        if ((nome != "" || nome != null) && (email != "" || email != null)) {
             nomeMenu.setText(nome);
             emailMenu.setText(email);
         }
@@ -86,43 +96,69 @@ public class Finansave extends AppCompatActivity
                 startActivity(i);
             }
         });
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
     @Override
-    public void onStart(){
+    public void onStart() {
         super.onStart();
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client.connect();
         Log.i("onStart Finansave", "Finansave");
         calculoTotalVisaoGeral();
         LoadThread loadThreadDespesa = new LoadThread();
         LoadThreadReceita loadThreadReceita = new LoadThreadReceita();
         loadThreadDespesa.execute();
         loadThreadReceita.execute();
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        Action viewAction = Action.newAction(
+                Action.TYPE_VIEW, // TODO: choose an action type.
+                "Finansave Page", // TODO: Define a title for the content shown.
+                // TODO: If you have web page content that matches this app activity's content,
+                // make sure this auto-generated web page URL is correct.
+                // Otherwise, set the URL to null.
+                Uri.parse("http://host/path"),
+                // TODO: Make sure this auto-generated app deep link URI is correct.
+                Uri.parse("android-app://com.example.denis.finansave/http/host/path")
+        );
+        AppIndex.AppIndexApi.start(client, viewAction);
     }
 
     @Override
-    public void onRestart(){
+    public void onRestart() {
         super.onRestart();
         Log.i("onRestart Finansave", "Finansave");
     }
 
     @Override
-    public void onPause(){
+    public void onPause() {
         super.onPause();
         Log.i("onPause Finansave", "Finansave");
     }
 
-    private void calculoTotalVisaoGeral(){
+    private void calculoTotalVisaoGeral() {
         Float somaDespesas = calculaTotalDespesasAcumuladas();
         Float somaReceitas = calculaTotalReceitasAcumuladas();
 
         double total = (somaReceitas - somaDespesas);
         NumberFormat numberFormat = new DecimalFormat(".##");
         lblVisaoGeral.setText(numberFormat.format(total));
+
+        float valorVisaoGeral = Float.valueOf(lblVisaoGeral.getText().toString());
+
+        if(valorVisaoGeral > 0)
+            lblVisaoGeral.setTextColor(Color.GREEN);
+        else
+            lblVisaoGeral.setTextColor(Color.RED);
     }
 
     //Calculo do Valor Total das Despesas acumuladas
     private Float calculaTotalDespesasAcumuladas() {
-        List<Movimentacao> lstMov =  new MovimentacaoDao(this).getMovimentacao(TipoMovimentacao.DESPESA);
+        List<Movimentacao> lstMov = new MovimentacaoDao(this).getMovimentacao(TipoMovimentacao.DESPESA);
 
         Float vlr = 0f;
 
@@ -132,8 +168,29 @@ public class Finansave extends AppCompatActivity
         return vlr;
     }
 
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        Action viewAction = Action.newAction(
+                Action.TYPE_VIEW, // TODO: choose an action type.
+                "Finansave Page", // TODO: Define a title for the content shown.
+                // TODO: If you have web page content that matches this app activity's content,
+                // make sure this auto-generated web page URL is correct.
+                // Otherwise, set the URL to null.
+                Uri.parse("http://host/path"),
+                // TODO: Make sure this auto-generated app deep link URI is correct.
+                Uri.parse("android-app://com.example.denis.finansave/http/host/path")
+        );
+        AppIndex.AppIndexApi.end(client, viewAction);
+        client.disconnect();
+    }
+
+
     //Cria uma Thread para realizar a soma das Despesas Acumuladas
-    class LoadThread extends AsyncTask<Void,Void,Float>{
+    class LoadThread extends AsyncTask<Void, Void, Float> {
 
         @Override
         protected Float doInBackground(Void... params) {
@@ -151,7 +208,7 @@ public class Finansave extends AppCompatActivity
 
     //Calculo do Valor Total das Receitas acumuladas
     private Float calculaTotalReceitasAcumuladas() {
-        List<Movimentacao> lstMov =  new MovimentacaoDao(this).getMovimentacao(TipoMovimentacao.RECEITA);
+        List<Movimentacao> lstMov = new MovimentacaoDao(this).getMovimentacao(TipoMovimentacao.RECEITA);
 
         Float vlr = 0f;
 
@@ -162,7 +219,7 @@ public class Finansave extends AppCompatActivity
     }
 
     //Thread para realizar a soma do Total das Receitas
-    class LoadThreadReceita extends AsyncTask<Void,Void,Float>{
+    class LoadThreadReceita extends AsyncTask<Void, Void, Float> {
 
         @Override
         protected Float doInBackground(Void... params) {
@@ -228,22 +285,4 @@ public class Finansave extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
-    public void abrirCamera() {
-        Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(i, 0);
-    }
-
-    public void onActivityResult(int requesCode, int resultCode, Intent data){
-        if(data!=null){
-            Bundle bundle = data.getExtras();
-            if(bundle != null){
-                Bitmap img = (Bitmap) bundle.get("data");
-                //if (imgMenu != null)
-                    //imgMenu.setImageBitmap(img);
-            }
-        }
-    }
-
-
 }

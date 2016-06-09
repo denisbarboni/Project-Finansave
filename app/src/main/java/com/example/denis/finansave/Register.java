@@ -40,6 +40,7 @@ public class Register extends Activity {
 
                    Intent intent = new Intent(getApplicationContext(), Login.class);
                    startActivity(intent);
+                   finish();
                }
             }
         });
@@ -59,8 +60,8 @@ public class Register extends Activity {
 
     public boolean validaRegistro(){
         String nome = etNomeCadastro.getText().toString().trim();
-        String senha =etSenhaCadastro.getText().toString().trim();
-        String email =etEmailCadastro.getText().toString().trim();
+        String senha = etSenhaCadastro.getText().toString().trim();
+        String email = etEmailCadastro.getText().toString().trim();
         return (!isEmptyFields(nome, senha, email));
     }
 

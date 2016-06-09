@@ -26,7 +26,7 @@ public class MovimentacaoDao {
     public static String COLUMN_NAME_DATE = "data";
     public static String COLUMN_NAME_DESCRICAO = "descricao";
     public static String COLUMN_NAME_TIPO = "tipo";
-    public static String COLUMN_NAME_FOTO = "foto";
+
 
     public static  String SQL_CREATE_MOVIMENTACAO =
             "CREATE TABLE movimentacao (" +
@@ -34,7 +34,6 @@ public class MovimentacaoDao {
                     "valor TEXT, " +
                     "data TEXT, "+
                     "descricao TEXT, " +
-                    "foto BLOB, " +
                     "tipo integer );";
 
     public MovimentacaoDao(Context context){

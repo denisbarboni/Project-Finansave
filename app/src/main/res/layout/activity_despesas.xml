@@ -23,5 +23,16 @@
 
     <include layout="@layout/content_despesas" />
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabDespesas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@android:drawable/ic_input_add"
+        android:focusableInTouchMode="false"
+        android:focusable="false"
+        android:tint="#fbf8f8" />
+
 
 </android.support.design.widget.CoordinatorLayout>

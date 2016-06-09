@@ -55,7 +55,6 @@ public class Lancar extends Activity {
         imgFoto = (ImageView) findViewById(R.id.imgFoto);
         imgFotoTirada = (ImageView) findViewById(R.id.imgFotoTirada);
 
-
         imgFoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,7 +100,6 @@ public class Lancar extends Activity {
         movimentacao.setData(etData.getText().toString());
         movimentacao.setDescricao(etDesc.getText().toString());
 
-
         MovimentacaoDao bd = new MovimentacaoDao(this);
         bd.inserirMovimentacao(movimentacao);
 
@@ -137,7 +135,7 @@ public class Lancar extends Activity {
     }
 
     public boolean isEmptyFields(Float valor, String data, String descricao){
-
+        
         if (TextUtils.isEmpty(valor.toString().trim())){
             etValor.requestFocus(); //seta o foco para o campo Email
             etValor.setError("Preencha o campo Valor");

@@ -60,15 +60,15 @@ public class Despesas extends AppCompatActivity {
             }
         });
 
-       /* FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabDespesas);
+       FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabDespesas);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(), Lancar.class);
-                i.putExtra("tipo", "D");
+                i.putExtra("tipo", TipoMovimentacao.DESPESA.ordinal());
                 startActivity(i);
             }
-        });*/
+        });
     }
 
     //Calculo do Valor Total das Despesas acumuladas
@@ -108,7 +108,7 @@ public class Despesas extends AppCompatActivity {
         }
     }
 
-    public boolean onCreateOptionsMenu(Menu menu) {
+   /* public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.finansave2, menu);
         return true;
@@ -129,7 +129,7 @@ public class Despesas extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 
 
 }
